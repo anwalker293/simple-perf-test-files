@@ -2,6 +2,8 @@
 
 workers13=(1 3)
 workers35=(3 5)
+workers5=(5)
+workers3=(3)
 
 function reset_issuer () {
   # Takes in duration (1), workers (3+)
@@ -9,12 +11,12 @@ function reset_issuer () {
   workers=("$@")
 	for item in "${workers[@]}" 
 	do
-    echo sleep ${duration}
-    echo sleep 450
-    echo sudo docker compose -f issuer-docker-compose.yml down -v
-    echo sudo docker compose -f issuer-docker-compose.yml up -d
-    echo sleep 450
-    echo sleep 900 
+    		sleep ${duration}
+    		sleep 450
+    		sudo docker compose -f issuer-docker-compose.yml down -v
+    		sudo docker compose -f issuer-docker-compose.yml up -d
+     		sleep 450
+    		sleep 900 
 	done
 }
 
