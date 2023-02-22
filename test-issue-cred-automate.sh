@@ -4,6 +4,7 @@ ramp=0
 workers13=(1 3)
 workers35=(3 5)
 workers5=(5)
+workers3=(3)
 
 function automate_issue_cred () {
   # Takes in , duration (1), string to echo (2), workers (3+)
@@ -13,11 +14,11 @@ function automate_issue_cred () {
   amount_of_workers=("$@")
 	for item in "${amount_of_workers[@]}" 
 	do
-		echo touch issue-credential-${ramp}-${1}-${item}.txt
-		echo sudo docker compose -f perf-docker-compose.yml run perf molotov max_cred_issuance.py -s issue_credential_new_connection -w ${item} -d ${1} --ramp-up ${ramp} --statsd --statsd-address tcp://statsd:8125 >&1 | tee issue-credential-${ramp}-${1}-${item}.txt
-    echo sleep 900
-    echo "Just finished with ${string}, downing issuer"
-    echo sleep 900
+		touch issue-credential-${ramp}-${1}-${item}.txt
+		sudo docker compose -f perf-docker-compose.yml run perf molotov max_cred_issuance.py -s issue_credential_new_connection -w ${item} -d ${1} --ramp-up ${ramp} --statsd --statsd-address tcp://statsd:8125 >&1 | tee issue-credential-${ramp}-${1}-${item}.txt
+    		sleep 900
+    		echo "Just finished with ${string}, downing issuer"
+    		sleep 900
 	done
 }
 
