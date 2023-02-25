@@ -25,4 +25,3 @@ function automate_issue_cred () {
 
 # 12 hours (3,5)
 automate_issue_cred 43200 '12 Hours' "${workers1[@]}" 
-#4 Days (1 worker, 3 workers)
