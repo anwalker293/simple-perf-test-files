@@ -4,6 +4,7 @@ workers13=(1 3)
 workers35=(3 5)
 workers5=(5)
 workers3=(3)
+workers1=(1)
 
 function reset_issuer () {
   # Takes in duration (1), workers (3+)
@@ -20,8 +21,5 @@ function reset_issuer () {
 	done
 }
 
-reset_issuer 43200 "${workers35}"
-reset_issuer 345600 "${workers13}"
-reset_issuer 86400 "${workers35}"
-reset_issuer 172800 "${workers5}"
+reset_issuer 43200 "${workers1[@]}"
 
