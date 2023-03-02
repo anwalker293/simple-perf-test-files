@@ -21,5 +21,32 @@ function reset_issuer () {
 	done
 }
 
+# fixing up for present proof
+# 1 hour
+reset_issuer 3600 "${workers1[@]}"
+
+# 12 hours
 reset_issuer 43200 "${workers1[@]}"
+
+# 2 hours
+reset_issuer 7200 "${workers1[@]}"
+
+# 1 day
+reset_issuer 86400 "${workers1[@]}"
+
+# 6 hours
+reset_issuer 21600 "${workers1[@]}"
+
+# 4 hours
+reset_issuer 14400 "${workers1[@]}"
+
+# 8 hours
+reset_issuer 28800 "${workers1[@]}"
+
+# 3 days
+
+
+
+
+
 
