@@ -15,8 +15,9 @@ function automate_issue_cred () {
   	amount_of_workers=("$@")
   	for item in "${amount_of_workers[@]}" 
 	do
-		touch issue-credential-${ramp}-${duration}-${item}.txt
-		sudo docker compose -f perf-docker-compose.yml run perf molotov max_cred_issuance.py -s issue_credential_new_connection -w ${item} -d ${duration} --ramp-up ${ramp} -c --statsd --statsd-address tcp://statsd:8125 >&1 | tee issue-credential-${ramp}-${duration}-${item}.txt
+		#touch issue-credential-${ramp}-${duration}-${item}.txt
+		sudo docker compose -f perf-docker-compose.yml run perf molotov max_cred_issuance.py -s issue_credential_new_connection -w ${item} -d ${duration} -c --ramp-up ${ramp} -c --statsd --statsd-address tcp://statsd:8125 
+		#>&1 | tee issue-credential-${ramp}-${duration}-${item}.txt
     		sleep 900
     		echo "Just finished with ${string}, downing issuer"
     		sleep 900
