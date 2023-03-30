@@ -16,7 +16,7 @@ function automate_issue_cred () {
   	for item in "${amount_of_workers[@]}" 
 	do
 		#touch issue-credential-${ramp}-${duration}-${item}.txt
-		sudo docker compose -f perf-docker-compose.yml run perf molotov max_cred_issuance.py -s issue_credential_new_connection -w ${item} -d ${duration} -c --ramp-up ${ramp} -c --statsd --statsd-address tcp://statsd:8125 
+		sudo docker compose -f perf-docker-compose.yml run perf molotov max_cred_issuance.py -s present_proof_existing_connection -w ${item} -d ${duration} --ramp-up ${ramp} 
 		#>&1 | tee issue-credential-${ramp}-${duration}-${item}.txt
     		sleep 900
     		echo "Just finished with ${string}, downing issuer"
@@ -24,5 +24,14 @@ function automate_issue_cred () {
 	done
 }
 
-# 12 hours (3,5)
-automate_issue_cred 43200 '12 Hours' "${workers1[@]}" 
+# 5 days
+automate_issue_cred 432000 '5 days' "${workers1[@]}" 
+
+# 3 days
+automate_issue_cred 259200 '3 days' "${workers1[@]}" 
+
+# 4 days
+automate_issue_cred 345600 '4 days' "${workers1[@]}" 
+
+# 7 days
+automate_issue_cred 604800 '7 days' "${workers1[@]}" 
